@@ -31,4 +31,24 @@ void main() {
     await tester.pump();
     expect(_displayText(tester), '0');
   });
+
+  testWidgets("Two plus two", (WidgetTester tester) async {
+    await tester.pumpWidget(const CalculatorApp());
+
+  //press 2
+    await tester.tap(find.text("2").last);
+    await tester.pump();
+
+    ///press +
+  await tester.tap(find.text("+").last);
+  await tester.pump();
+
+    //press 2
+  await tester.tap(find.text("2").last);
+  await tester.pump();
+
+  //press 2
+  await tester.tap(find.text("=").last);
+  await tester.pump();
+  });
 }
