@@ -20,6 +20,42 @@ void main() {
     expect(_displayText(tester), '5');
   });
 
+  testWidgets('Calculator divides two numbers', (WidgetTester tester) async {
+    await tester.pumpWidget(const CalculatorApp());
+
+    await tester.tap(find.widgetWithText(ElevatedButton, '4'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '÷'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '2'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '='));
+    await tester.pump();
+
+    expect(_displayText(tester), '2');
+  });
+
+  testWidgets('Calculator multiplies two numbers', (WidgetTester tester) async {
+    await tester.pumpWidget(const CalculatorApp());
+
+    await tester.tap(find.widgetWithText(ElevatedButton, '3'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '×'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '6'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '='));
+    await tester.pump();
+
+    expect(_displayText(tester), '18');
+  });
+
+  testWidgets('Calculator subtracts two numbers', (WidgetTester tester) async {
+    await tester.pumpWidget(const CalculatorApp());
+
+    await tester.tap(find.widgetWithText(ElevatedButton, '5'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '−'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '3'));
+    await tester.tap(find.widgetWithText(ElevatedButton, '='));
+    await tester.pump();
+
+    expect(_displayText(tester), '2');
+  });
+
   testWidgets('Clear button resets the display', (WidgetTester tester) async {
     await tester.pumpWidget(const CalculatorApp());
 
@@ -40,15 +76,16 @@ void main() {
     await tester.pump();
 
     ///press +
-  await tester.tap(find.text("+").last);
-  await tester.pump();
+    await tester.tap(find.text("+").last);
+    await tester.pump();
 
     //press 2
-  await tester.tap(find.text("2").last);
-  await tester.pump();
+    await tester.tap(find.text("2").last);
+    await tester.pump();
 
   //press 2
-  await tester.tap(find.text("=").last);
-  await tester.pump();
+    await tester.tap(find.text("=").last);
+    await tester.pump();
   });
+
 }
